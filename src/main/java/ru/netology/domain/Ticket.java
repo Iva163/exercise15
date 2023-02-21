@@ -20,6 +20,9 @@ public class Ticket implements Comparable<Ticket> {
         return id;
     }
 
+    public int getTimeTravel() {
+        return timeTravel;
+    }
 
     @Override
     public int compareTo(Ticket o) {
