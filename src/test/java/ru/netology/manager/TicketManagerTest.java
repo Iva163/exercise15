@@ -42,6 +42,7 @@ public class TicketManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldFindAllOne() {
         Ticket[] expected = {ticket10};
@@ -49,6 +50,7 @@ public class TicketManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldFindAllNotExist() {
         Ticket[] expected = new Ticket[0];
