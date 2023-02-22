@@ -21,6 +21,8 @@ public class TicketManagerTest {
     Ticket ticket7 = new Ticket(449, 2700, "DME", "LED", 100);
     Ticket ticket8 = new Ticket(45, 2701, "DME", "LED", 100);
     Ticket ticket9 = new Ticket(46, 2701, "DME", "LED", 90);
+    Ticket ticket10 = new Ticket(156, 3218, "KUF", "LED", 144);
+
 
     @BeforeEach
     public void setup() {
@@ -33,6 +35,7 @@ public class TicketManagerTest {
         tickets.add(ticket7);
         tickets.add(ticket8);
         tickets.add(ticket9);
+        tickets.add(ticket10);
 
     }
 
@@ -41,6 +44,21 @@ public class TicketManagerTest {
 
         Ticket[] expected = {ticket2, ticket9, ticket7, ticket8, ticket1, ticket3};
         Ticket[] actual = tickets.findAll("DME", "LED", timeAscComparator);
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindAllOneC() {
+        Ticket[] expected = {ticket10};
+        Ticket[] actual = tickets.findAll("KUF", "LED", timeAscComparator);
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void shouldFindAllNotExistC() {
+        Ticket[] expected = new Ticket[0];
+        Ticket[] actual = tickets.findAll("LED", "DME", timeAscComparator);
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -60,6 +78,21 @@ public class TicketManagerTest {
 
         Ticket[] expected = {ticket3, ticket7, ticket8, ticket9, ticket2, ticket1};
         Ticket[] actual = tickets.findAll("DME", "LED");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindAllOne() {
+        Ticket[] expected = {ticket10};
+        Ticket[] actual = tickets.findAll("KUF", "LED");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void shouldFindAllNotExist() {
+        Ticket[] expected = new Ticket[0];
+        Ticket[] actual = tickets.findAll("LED", "DME");
 
         Assertions.assertArrayEquals(expected, actual);
     }
